@@ -4,7 +4,21 @@ Hey.
 
 This is a basic script written in Python 3 to re-invest max available balance with the Bitzzio telegram bot.
 
-How the script schedules re-investing
+Since the Bitzzio Program has officially closed, here is some context to this project:
+
+Bitzzio was a HYIP within the crypto-space that allowed effective compounding every 12 hours. 
+This was either done manually through the dashboard, or by sending the message '/reinvest max' to a telegram-bot that is linked to the online dashboard. 
+While the telegram bot for the program is convenient, it is not so when the next possible reinvest (compound) should be triggered at 3am.
+
+Cue script.
+
+For maximum continuous compounding, the message was to be send to the telegram bot every 12 hours. 
+This script was written taking the last investment timestamp, and then calculating the next possible opportunity. 
+If it passed, it automatically send the message to the telegram bot and then schedueled itself to so again after 12 hours. 
+Else, if there is no opportunity to reinvest yet according to the timestamp, 
+it'll schedule to send the message at the next opportunity, and then re-schedule to do the same every 12 hours thereafter.
+
+## How the script schedules re-investing
 
 When the script is run, it sets up regular 12 hour reinvest cycles in the following way:
 
@@ -16,7 +30,7 @@ When the script is run, it sets up regular 12 hour reinvest cycles in the follow
     3. After the first reinvest, it will send the message to the Bitzzio telegram bot "/reinvest max", to reinvest your available balance at the time.
     4. Once reinvested, it will set up a recurring schedule for every 12 hours, to repeat the re-invest. This will continue until the script is stopped.
 
-To configure it for your use, you need to configure the following details:
+## To configure it for your use, you need to configure the following details:
 
     Last Reinvest Time: This is the last time you reinvested. It'll be the bottom-most deposit entry in the dashboard.
         Format is DD/MM/YYYY HH:MM.
@@ -30,7 +44,7 @@ To configure it for your use, you need to configure the following details:
         Once logged in, go to 'API development tools'.
         Create a new app, where you'll get your App api_id and App api_hash.
 
-To install the local environment needed to run the script:
+## To install the local environment needed to run the script:
 
     1. Install Python 3.5+ (https://www.python.org/downloads/)
     2. Insure to add Python to your PATH environment on setup.
