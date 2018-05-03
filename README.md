@@ -6,29 +6,33 @@ This is a basic script written in Python 3 to re-invest max available balance wi
 
 Since the Bitzzio Program has officially closed, here is some context to this project:
 
-Bitzzio was a HYIP within the crypto-space that allowed effective compounding every 12 hours. 
-This was either done manually through the dashboard, or by sending the message '/reinvest max' to a telegram-bot that is linked to the online dashboard. 
-While the telegram bot for the program is convenient, it is not so when the next possible reinvest (compound) should be triggered at 3am.
+Bitzzio was a HYIP (High Yield Investment Program) within the crypto-space that allowed compounding of your investment amount every 12 hours, by adding your earned balance to your capital balance.
+
+This was either done manually through the dashboard, or by sending the message '/reinvest max' to a telegram-bot that was linked to the online dashboard. 
+While the telegram bot for the program was convenient, it was not so when the next possible reinvest (compound) should be triggered at 3am.
 
 Cue script.
 
-For maximum continuous compounding, the message was to be send to the telegram bot every 12 hours. 
-This script was written taking the last investment timestamp, and then calculating the next possible opportunity. 
-If it passed, it automatically send the message to the telegram bot and then schedueled itself to so again after 12 hours. 
-Else, if there is no opportunity to reinvest yet according to the timestamp, 
-it'll schedule to send the message at the next opportunity, and then re-schedule to do the same every 12 hours thereafter.
+*Quick note - While the 'investment'-space involving cryptocurries is largely unregulated at the moment, and most programs effectively are ponzi schemes, the mathematics behinds the returns (4.8% per day in this case), as well as writing a script to maximize the potential return through regularly compounding through the telegram-bot every 12 hours fascinated me. 
+
+I thought: '_this can be automated_' - and so this project was born.
+
+For maximum continuous compounding, the message was to be send to the telegram bot every 12 hours.
+This script was written to accept the last investment timestamp, and then calculating the next possible reinvest opportunity.
+If 12 hours had already passed, it automatically sent the message to the telegram bot and then schedueled itself to so again after 12 hours.
+Else, if 12 hours has not yet elapsed, it'll schedule to send the message at the next available opportunity, and then re-schedule to do the same every 12 hours thereafter.
 
 ## How the script schedules re-investing
 
-When the script is run, it sets up regular 12 hour reinvest cycles in the following way:
+When the script is run, it sets up regular 12 hour reinvest cycles (sends the message in Telegram) in the following way:
 
     1. It first takes the last reinvest date and time, and then calculates when to next reinvest after 12 hours, in your local time.
     2. It will then schedule to run the first reinvest when that time comes. 
        Depending on your local time relative to the next Reinvest time, the script will do two things:
         2.1 If your local time is before the 12 hour reinvest point of the last reinvestment, it will simply wait until it's time to reinvest.
         2.2 If your localtime has passed the 12 hour reinvest point of the last reinvestment, it will instantly send the first reinvest message to the Bitzzio bot.
-    3. After the first reinvest, it will send the message to the Bitzzio telegram bot "/reinvest max", to reinvest your available balance at the time.
-    4. Once reinvested, it will set up a recurring schedule for every 12 hours, to repeat the re-invest. This will continue until the script is stopped.
+    3. Once reinvested, it will set up a recurring schedule for every 12 hours, to repeat the re-invest (send the message). 
+    This will continue until the script is stopped.
 
 ## To configure it for your use, you need to configure the following details:
 
@@ -57,6 +61,10 @@ When the script is run, it sets up regular 12 hour reinvest cycles in the follow
 Provided that your number is correctly formatted, you'll be prompted to enter a passcode that is sent to your telegram client/mobile phone.
 Once authenticated, you'll be automatically be logged in next time your run the script.
 
-If you need any assistance, hit me up on telegram @paullyFIRE, or by email at pddpatterson@gmail.com.
+## Pour Conclure
+
+This project was written with minimal Python experience under my belt, and was an awesome opportunity to build something with a different toolset, just grafting the syntax and begin building.
+
+Additionally, it was structured around the ReinvestmentClient class, with the intent to create multiple instances, as I considered extending this into a Webservice for other Bitzzio users to make use of eventually. The program ended unfortunately.
 
 Suggestions and critique welcome.
