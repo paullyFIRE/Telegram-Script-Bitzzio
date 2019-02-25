@@ -11,7 +11,7 @@ While the telegram bot for the program was convenient, it was not so when the ne
 
 Cue script.
 
-*Quick note - While the 'investment'-space involving cryptocurries is largely unregulated at the moment, and most programs effectively are ponzi schemes, the mathematics behinds the returns (4.8% per day in this case), as well as writing a script to maximize the potential return through regularly compounding through the telegram-bot every 12 hours fascinated me. 
+*Quick note - While the 'investment'-space involving cryptocurries is largely unregulated, and most programs effectively are ponzi schemes, the mathematics behinds the returns (4.8% per day in this case), as well as writing a script to maximize the potential return through regularly compounding through the telegram-bot every 12 hours fascinated me. 
 
 I thought: '_this can be automated_' - and so this project was born.
 
