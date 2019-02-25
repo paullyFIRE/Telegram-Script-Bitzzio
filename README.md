@@ -4,8 +4,6 @@ Hey.
 
 This is a basic script written in Python 3 to re-invest max available balance with the Bitzzio telegram bot.
 
-Since the Bitzzio Program has officially closed, here is some context to this project:
-
 Bitzzio was a HYIP (High Yield Investment Program) within the crypto-space that allowed compounding of your investment amount every 12 hours, by adding your earned balance to your capital balance.
 
 This was either done manually through the dashboard, or by sending the message '/reinvest max' to a telegram-bot that was linked to the online dashboard. 
